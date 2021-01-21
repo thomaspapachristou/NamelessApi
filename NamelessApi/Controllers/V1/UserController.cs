@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using NamelessApi.Contracts.V1;
 using NamelessApi.Contracts.V1.Requests;
 using NamelessApi.Contracts.V1.Responses;
+using NamelessApi.Domain;
 using NamelessApi.Services;
 
 namespace NamelessApi.Controllers.V1
@@ -39,7 +40,7 @@ namespace NamelessApi.Controllers.V1
                 });
             }
 
-            var authResponse = await _userService.RegisterAsync(request.Email, request.Username, request.Password);
+            AuthenticationResult authResponse = await _userService.RegisterAsync(request.Email, request.Username, request.Password);
 
             if (!authResponse.Success)
             {
@@ -58,7 +59,7 @@ namespace NamelessApi.Controllers.V1
         [HttpPost(ApiRoutes.User.Login)]
         public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
         {
-            var authResponse = await _userService.LoginAsync(request.Email, request.Password);
+            AuthenticationResult authResponse = await _userService.LoginAsync(request.Email, request.Password);
 
             if (!authResponse.Success)
             {

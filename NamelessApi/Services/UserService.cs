@@ -26,8 +26,8 @@ namespace NamelessApi.Services
 
         public async Task<AuthenticationResult> RegisterAsync(string email, string username, string password)
         {
-            var existingUserEmail = await _userManager.FindByEmailAsync(email);
-            var existingUserName = await _userManager.FindByNameAsync(username);
+            IdentityUser existingUserEmail = await _userManager.FindByEmailAsync(email);
+            IdentityUser existingUserName = await _userManager.FindByNameAsync(username);
 
             if (existingUserEmail != null)
             {
@@ -78,7 +78,7 @@ namespace NamelessApi.Services
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
             // On retourne notre petit model sorti du four de Domain/.
             return new AuthenticationResult
@@ -90,7 +90,7 @@ namespace NamelessApi.Services
 
         public async Task<AuthenticationResult> LoginAsync(string email, string password)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            IdentityUser user = await _userManager.FindByEmailAsync(email);
 
             if (user == null)
             {
@@ -100,7 +100,7 @@ namespace NamelessApi.Services
                 };
             }
 
-            var userHasValidPassword = await _userManager.CheckPasswordAsync(user, password);
+            bool userHasValidPassword = await _userManager.CheckPasswordAsync(user, password);
 
             if (!userHasValidPassword)
             {
@@ -133,7 +133,7 @@ namespace NamelessApi.Services
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
             // On retourne notre petit model sorti du four de Domain/.
             return new AuthenticationResult

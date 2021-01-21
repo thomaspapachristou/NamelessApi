@@ -81,3 +81,4 @@ E:\ABC\Desktop\ASP.NET CORE\NamelessApi\NamelessApi\bin\Debug\net5.0\Microsoft.A
 E:\ABC\Desktop\ASP.NET CORE\NamelessApi\NamelessApi\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 E:\ABC\Desktop\ASP.NET CORE\NamelessApi\NamelessApi\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
 E:\ABC\Desktop\ASP.NET CORE\NamelessApi\NamelessApi\bin\Debug\net5.0\Microsoft.Identity.Web.dll
+E:\ABC\Desktop\ASP.NET CORE\NamelessApi\NamelessApi\obj\Debug\net5.0\NamelessApi.csprojAssemblyReference.cache

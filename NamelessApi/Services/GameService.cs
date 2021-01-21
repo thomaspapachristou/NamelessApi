@@ -56,7 +56,7 @@ namespace NamelessApi.Services
                 return false;
             }
             _dataContext.Games.Remove(game);
-             var deleted = await _dataContext.SaveChangesAsync();
+             int deleted = await _dataContext.SaveChangesAsync();
 
             return deleted > 0;
         }
